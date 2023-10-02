@@ -4,7 +4,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			users: [],
 			starships: [],
 			planets: [],
-			characters: [],
+			characters: {},
+			vehicles: {},
+			planetoid: {},
+			favorites: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -65,8 +68,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getCharacters: async (idContact) => {
-				const url = `https://www.swapi.tech/api/people/${idContact}`;
+			getDetailedCharacters: async (id) => {
+				const store = getStore();
+				const url = `https://www.swapi.tech/api/people/${id}`;
 				const options = {
 					method: "GET",
 					headers: { "Content-Type": "application/json" }
@@ -74,11 +78,62 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(url, options);
 				if (response.ok) {
 					const data = await response.json();
-					setStore({ characters: data.result });
+					console.log(data);
+					const details = data.result;
+					console.log(details);
+					setStore({ characters: details });
 				} else {
 					console.log("ERROR:", response.status, response.statusText);
 				}
-			}
+			},
+
+			getDetailedStarships: async (id) => {
+				const store = getStore();
+				const url = `https://www.swapi.tech/api/starships/${id}`;
+				const options = {
+					method: "GET",
+					headers: { "Content-Type": "application/json" }
+				};
+				const response = await fetch(url, options);
+				if (response.ok) {
+					const data = await response.json();
+					console.log(data);
+					const details = data.result;
+					console.log(details);
+					setStore({ vehicles: details });
+				} else {
+					console.log("ERROR:", response.status, response.statusText);
+				}
+			},
+
+			getDetailedPlanets: async (id) => {
+				const store = getStore();
+				const url = `https://www.swapi.tech/api/planets/${id}`;
+				const options = {
+					method: "GET",
+					headers: { "Content-Type": "application/json" }
+				};
+				const response = await fetch(url, options);
+				if (response.ok) {
+					const data = await response.json();
+					console.log(data);
+					const details = data.result;
+					console.log(details);
+					setStore({ planetoid: details });
+				} else {
+					console.log("ERROR:", response.status, response.statusText);
+				}
+			},
+			addToFavorites: (item, type) => {
+				const store = getStore();
+				// Verificar si el personaje ya está en favoritos
+				const isAlreadyFavorited = store.favorites.some((fav) => fav.uid === item.uid);
+		
+				if (!isAlreadyFavorited) {
+				  // Agregar el personaje a la lista de favoritos
+				  setStore({ favorites: [...store.favorites, { ...item, type }] });
+				}
+			  },
 
 		}
 	};
