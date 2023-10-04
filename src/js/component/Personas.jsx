@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
-import { DetailedCharacter } from "../views/DetailedCharacter.jsx";
+// import { DetailedCharacter } from "../views/DetailedCharacter.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
