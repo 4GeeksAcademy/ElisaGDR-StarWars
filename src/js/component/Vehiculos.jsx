@@ -9,7 +9,7 @@ export const Vehiculos = () => {
 
     const { store, actions } = useContext(Context);
     const addToFavorites = (starship) => {
-        actions.addToFavorites(starship);
+        actions.addToFavorites(starship, 'starship');
       };
 
     return (

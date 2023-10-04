@@ -69,7 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getDetailedCharacters: async (id) => {
-				const store = getStore();
+			//	const store = getStore();
 				const url = `https://www.swapi.tech/api/people/${id}`;
 				const options = {
 					method: "GET",
@@ -78,9 +78,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(url, options);
 				if (response.ok) {
 					const data = await response.json();
-					console.log(data);
+				//	console.log(data);
 					const details = data.result;
-					console.log(details);
+				//	console.log(details);
 					setStore({ characters: details });
 				} else {
 					console.log("ERROR:", response.status, response.statusText);
@@ -88,7 +88,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getDetailedStarships: async (id) => {
-				const store = getStore();
+			//	const store = getStore();
 				const url = `https://www.swapi.tech/api/starships/${id}`;
 				const options = {
 					method: "GET",
@@ -107,7 +107,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getDetailedPlanets: async (id) => {
-				const store = getStore();
+			//	const store = getStore();
 				const url = `https://www.swapi.tech/api/planets/${id}`;
 				const options = {
 					method: "GET",

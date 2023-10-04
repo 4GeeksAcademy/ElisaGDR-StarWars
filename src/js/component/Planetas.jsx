@@ -10,7 +10,7 @@ export const Planetas = () => {
 
     const { store, actions } = useContext(Context);
     const addToFavorites = (planet) => {
-        actions.addToFavorites(planet);
+        actions.addToFavorites(planet, 'planet');
       };
 
     return (
