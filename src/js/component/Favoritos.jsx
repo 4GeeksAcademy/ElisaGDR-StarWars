@@ -6,11 +6,12 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 export const Favoritos = () => {
 
-    const { store, actions } = useContext(Context);
+    
+    const { store, setStore } = useContext(Context);
     const removeFromFavorites = (item) => {
         console.log('Removing from favorites:', item);
         const updatedFavorites = store.favorites.filter((fav) => fav.uid !== item.uid);
-        actions.setStore({ favorites: updatedFavorites });
+        setStore({ favorites: updatedFavorites });
     };
 
     return (
@@ -27,8 +28,7 @@ export const Favoritos = () => {
                 <ul className="lista dropdown-menu dropdown-menu-end">
                     {store.favorites.map((favorite) => (
                         <li key={favorite.uid} className="dropdown-item">
-                            
-                                {favorite.name}
+                                {favorite.name} - {favorite.type}
                                 <button
                                     className="btn ml-5"
                                     onClick={() => removeFromFavorites(favorite)}>

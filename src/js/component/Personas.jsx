@@ -9,12 +9,11 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 export const Personas = () => {
 
     const { store, actions } = useContext(Context);
-    store.characters = {};
-    store.charactersDetails = {};
+    // store.characters = {};
     const addToFavorites = (character) => {
-        actions.addToFavorites(character);
+        actions.addToFavorites(character, 'character');
       };
-
+    
     return (
         <div>
             <h1 style={{ color: "red", textAlign: "left", margin: "60px" }} >Characters</h1>

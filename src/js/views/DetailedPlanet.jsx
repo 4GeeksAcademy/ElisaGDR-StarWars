@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+
 export const DetailedPlanet = () => {
     const { store, actions } = useContext(Context);
     const params = useParams();
